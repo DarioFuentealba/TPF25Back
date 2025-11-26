@@ -1,0 +1,10 @@
+venv/
+env/
+.env
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+.Python
+db.sqlite3
+backend/settings.py

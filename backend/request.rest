@@ -1,0 +1,12 @@
+@urlBase1 = http://127.0.0.1:8000/api/computacion/productos-por-uso/Gamer/
+@urlBase2 = http://127.0.0.1:8000/api/computacion/categoria-con-subcategorias/
+@urlBase3 = http://127.0.0.1:8000/api/proveedor/
+@urlBase4=http://127.0.0.1:8000/api/envios/1
+GET {{urlBase1}}
+Content-Type: application/json
+###
+GET {{urlBase2}}
+Content-Type: application/json
+###
+GET {{urlBase4}}
+Content-Type: : application/json

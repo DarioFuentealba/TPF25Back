@@ -1,0 +1,29 @@
+# LOGIN DE USUARIO
+@urlLogin =http://127.0.0.1:8000/api/usuario/login/
+@urlEnvio=http://127.0.0.1:8000/api/usuario/costo-envio/
+@urlBase4=http://127.0.0.1:8000/api/envios/1
+@name1 = lolo
+@pass1= UrraPablo2025
+@name2 = lulu
+@pass2= EricaCabezas2025
+@name3 = lele
+@pass3= LeandroGonzales2025 
+### Login para obtener token
+POST {{urlLogin}}
+Content-Type: application/json
+
+{
+  "username": "{{name3}}",
+  "password": "{{pass3}}"
+}
+
+###
+###
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxOTYzODYwLCJpYXQiOjE3NjE5NDU4NjAsImp0aSI6IjY1ZGJiNjU5YjA0ZTRiZjk5NWNhOWJiMDJlMTkzMGNiIiwidXNlcl9pZCI6IjMiLCJ1c2VybmFtZSI6ImxlbGUiLCJpc19zdXBlcnVzZXIiOmZhbHNlfQ.OCLJsZytBMYw8FWmLxrZSBRxj4yDV0YgxWAOCLEWLJ4
+ ### PROBAR ENVIOS
+ GET {{{{urlBase4}}}}
+ Authorization: Bearer {{accessToken}}
+ Accept: */*
+
+
+
