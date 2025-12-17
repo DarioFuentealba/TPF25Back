@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+import dj_database_url
+import os
 
 from datetime import timedelta
 import pymysql
@@ -18,7 +20,6 @@ from datetime import timedelta
 
 from pathlib import Path
 from dotenv import load_dotenv
-import os
 #load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -118,27 +119,34 @@ CORS_ALLOW_HEADERS = [
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 load_dotenv()
-DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'db.sqlite3',
-    #}
+# DATABASES = {
+#     #'default': {
+#     #    'ENGINE': 'django.db.backends.sqlite3',
+#     #    'NAME': BASE_DIR / 'db.sqlite3',
+#     #}
 
-    # Armar tu PC empieza aca
-    "default": {
-        "ENGINE": "django.db.backends.mysql",
-        #"NAME": os.getenv("DB_NAME"),
-        "NAME": 'CompuTienda',
-        "USER": 'root',
-        #"USER": os.getenv("DB_USER"),
-       # "PASSWORD": os.getenv("DB_PASSWORD"), # obtiene la contraseña de las variables de entorno, si no esta definida el password es "". 
-      # "PASSWORD": 'mi_nueva_password',
-      "PASSWORD": '1234',
-        "HOST": "127.0.0.1",
-        "PORT": "3306",
-        "OPTIONS": {"charset": "utf8mb4"},
-    }
-    # Armar tu PC termina aca
+#     # Armar tu PC empieza aca
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         #"NAME": os.getenv("DB_NAME"),
+#         "NAME": 'CompuTienda',
+#         "USER": 'root',
+#         #"USER": os.getenv("DB_USER"),
+#        # "PASSWORD": os.getenv("DB_PASSWORD"), # obtiene la contraseña de las variables de entorno, si no esta definida el password es "". 
+#       # "PASSWORD": 'mi_nueva_password',
+#       "PASSWORD": '1234',
+#         "HOST": "127.0.0.1",
+#         "PORT": "3306",
+#         "OPTIONS": {"charset": "utf8mb4"},
+#     }
+#     # Armar tu PC termina aca
+# }
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('MYSQL_URL'),
+        conn_max_age=600
+    )
 }
 
 
